@@ -4,50 +4,56 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
-import { Cliente } from '../../clientes/entities/cliente.entity';
-import { Paquete } from '../../paquetes/entities/paquete.entity';
 
 export enum EstadoReserva {
   PENDIENTE = 'pendiente',
   CONFIRMADA = 'confirmada',
   CANCELADA = 'cancelada',
-  COMPLETADA = 'completada',
 }
 
 @Entity('reservas')
 export class Reserva {
-  @PrimaryGeneratedColumn({ unsigned: true })
+  @PrimaryGeneratedColumn()
   id: number;
 
+  // Datos del cliente
+  @Column({ length: 100 })
+  nombre: string;
+
+  @Column({ length: 150 })
+  email: string;
+
+  @Column({ length: 20, nullable: true })
+  telefono: string;
+
+  // Datos del paquete
+  @Column({ name: 'paquete_id' })
+  paqueteId: number;
+
+  @Column({ name: 'paquete_nombre', length: 200, nullable: true })
+  paqueteNombre: string;
+
+  // Detalles
   @Column({ name: 'fecha_viaje', type: 'date' })
   fechaViaje: string;
 
-  @Column({ name: 'num_personas', unsigned: true, default: 1 })
+  @Column({ name: 'num_personas', type: 'int', default: 1 })
   numPersonas: number;
-
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
-  total: number;
-
-  @Column({ type: 'enum', enum: EstadoReserva, default: EstadoReserva.PENDIENTE })
-  estado: EstadoReserva;
 
   @Column({ type: 'text', nullable: true })
   notas: string;
+
+  // Estado
+  @Column({ type: 'enum', enum: EstadoReserva, default: EstadoReserva.PENDIENTE })
+  estado: EstadoReserva;
+
+  @Column({ name: 'precio_total', type: 'decimal', precision: 10, scale: 2, nullable: true })
+  precioTotal: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
-
-  @ManyToOne(() => Cliente, (cliente) => cliente.reservas)
-  @JoinColumn({ name: 'cliente_id' })
-  cliente: Cliente;
-
-  @ManyToOne(() => Paquete)
-  @JoinColumn({ name: 'paquete_id' })
-  paquete: Paquete;
 }

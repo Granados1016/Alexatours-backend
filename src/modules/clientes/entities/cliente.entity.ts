@@ -3,9 +3,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  OneToMany,
 } from 'typeorm';
-import { Reserva } from '../../reservas/entities/reserva.entity';
 
 @Entity('clientes')
 export class Cliente {
@@ -29,7 +27,4 @@ export class Cliente {
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
-
-  @OneToMany(() => Reserva, (reserva) => reserva.cliente)
-  reservas: Reserva[];
 }

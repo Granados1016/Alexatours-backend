@@ -12,6 +12,7 @@ import { ConfiguracionModule } from './modules/configuracion/configuracion.modul
 import { BlogModule } from './modules/blog/blog.module';
 import { TestimoniosModule } from './modules/testimonios/testimonios.module';
 import { ContactoModule } from './modules/contacto/contacto.module';
+import { ReservasModule } from './modules/reservas/reservas.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ContactoModule } from './modules/contacto/contacto.module';
     BlogModule,
     TestimoniosModule,
     ContactoModule,
+    ReservasModule,
   ],
 })
 export class AppModule {}

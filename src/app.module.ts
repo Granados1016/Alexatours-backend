@@ -9,6 +9,9 @@ import { ClientesModule } from './modules/clientes/clientes.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { ConfiguracionModule } from './modules/configuracion/configuracion.module';
+import { BlogModule } from './modules/blog/blog.module';
+import { TestimoniosModule } from './modules/testimonios/testimonios.module';
+import { ContactoModule } from './modules/contacto/contacto.module';
 
 @Module({
   imports: [
@@ -25,6 +28,9 @@ import { ConfiguracionModule } from './modules/configuracion/configuracion.modul
     AdminModule,
     UploadModule,
     ConfiguracionModule,
+    BlogModule,
+    TestimoniosModule,
+    ContactoModule,
   ],
 })
 export class AppModule {}

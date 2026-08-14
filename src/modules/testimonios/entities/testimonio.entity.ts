@@ -14,7 +14,7 @@ export class Testimonio {
   @Column({ type: 'text' })
   comentario: string;
 
-  @Column({ type: 'tinyint', default: 5 })
+  @Column({ type: 'smallint', default: 5 })
   estrellas: number;
 
   @Column({ nullable: true })

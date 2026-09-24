@@ -51,4 +51,26 @@ export class CreatePaqueteDto {
   @IsOptional()
   @IsBoolean()
   destacado?: boolean;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  galeriaImagenes?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  itinerario?: string;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsNumber()
+  @Min(0)
+  @Type(() => Number)
+  ofertaPrecio?: number;
+
+  @ApiPropertyOptional()
+  @IsOptional()
+  @IsString()
+  ofertaHasta?: string;
 }
